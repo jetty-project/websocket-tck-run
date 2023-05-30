@@ -9,28 +9,31 @@ pipeline {
     buildDiscarder logRotator( numToKeepStr: '50' )
   }
   parameters {
-    string( defaultValue: 'tck-refactor-websocket-2-arquillian-url', description: 'GIT branch name to build TCK (master/tckrefactor)',
-            name: 'TCK_BRANCH' )
-
-    string( defaultValue: 'jetty-12.0.x', description: 'GIT branch name to build Jetty (jetty-12.0.x)',
-            name: 'JETTY_BRANCH' )
-
-    string( defaultValue: 'master', description: 'GIT branch name to build arquillian Jetty (master/tck-all-changes)',
-            name: 'ARQUILLIAN_JETTY_BRANCH' )
-
-    string( defaultValue: 'SNAPSHOT', description: 'Jetty Version',
-            name: 'JETTY_VERSION' )
-
-    choice(
-            description: 'Arquillian Github org',
-            name: 'GITHUB_ORG_ARQUILLIAN',
-            choices: ['arquillian','olamy'] )
 
     choice(
             description: 'TCK Github org',
             name: 'GITHUB_ORG_TCK',
             choices: ['olamy', 'jakartaee']
     )
+
+    string( defaultValue: 'tck-refactor-websocket-2-arquillian-url', description: 'GIT branch name to build TCK (master/tckrefactor)',
+            name: 'TCK_BRANCH' )
+
+    choice(
+            description: 'Arquillian Github org',
+            name: 'GITHUB_ORG_ARQUILLIAN',
+            choices: ['arquillian','olamy'] )
+
+    string( defaultValue: 'jetty-12.0-security-refactoring', description: 'GIT branch name to build arquillian Jetty (master/tck-all-changes)',
+            name: 'ARQUILLIAN_JETTY_BRANCH' )
+
+    string( defaultValue: 'jetty-12.0.x', description: 'GIT branch name to build Jetty (jetty-12.0.x)',
+            name: 'JETTY_BRANCH' )
+
+    string( defaultValue: 'SNAPSHOT', description: 'Jetty Version',
+            name: 'JETTY_VERSION' )
+
+
     string( defaultValue: 'jdk17', description: 'JDK to build Jetty', name: 'JDKBUILD' )
   }
 
