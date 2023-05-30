@@ -126,7 +126,7 @@ pipeline {
       }
       post {
         always {
-          junit testResults: '**/surefire-reports/TEST-**.xml'
+          junit testResults: '**/failsafe-reports/TEST-**.xml'
         }
       }
     }
