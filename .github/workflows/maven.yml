@@ -63,7 +63,7 @@ jobs:
         run: mvn  -ntp install:install-file -Dfile=./lib/javatest.jar -DgroupId=javatest -DartifactId=javatest -Dversion=5.0 -Dpackaging=jar
 
       - name: Build Websocket TCK with Maven
-        run: mvn -V -B -U -pl :servlet -am clean install -DskipTests -e  -B -U
+        run: mvn -V -B -U -pl :websocket-tck -am clean install -DskipTests -e  -B -U
 
       - name: Checkout TCK Run
         uses: actions/checkout@v3
