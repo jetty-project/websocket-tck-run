@@ -234,25 +234,9 @@
           <artifactId>maven-surefire-plugin</artifactId>
           <version>${surefire.version}</version>
           <configuration>
-            <!-- this need some times to run -->
-            <argLine>${fork.argLine} -Duser.language=en -Duser.country=US -Djava.locale.providers=COMPAT,CLDR
-              -Djava.protocol.handler.pkgs=javax.net.ssl
-              -Djavax.net.ssl.keyStore=${project.build.testOutputDirectory}/certificates/clientcert.jks
-              -Djavax.net.ssl.keyStorePassword=changeit
-              -Djavax.net.ssl.trustStore=${project.build.directory}/cacerts.jks</argLine>
-            <forkedProcessTimeoutInSeconds>15000</forkedProcessTimeoutInSeconds>
-            <dependenciesToScan>
-              <dependenciesToScan>jakartatck:websocket-tck</dependenciesToScan>
-            </dependenciesToScan>
-            <systemProperties>
-              <http2.timeout>${http2.timeout}</http2.timeout>
-              <porting.ts.url.class.1>com.sun.ts.tests.websocket.lib.implementation.sun.common.SunRIURL</porting.ts.url.class.1>
-              <ws_wait>2</ws_wait>
-            </systemProperties>
-            <includes>
-              <include>**/WSClient*</include>
-            </includes>
-            <trimStackTrace>false</trimStackTrace>
+            <excludes>
+              <exclude>**/AppTest**</exclude>
+            </excludes>
           </configuration>
         </plugin>
         <plugin>
@@ -263,6 +247,44 @@
       </plugins>
     </pluginManagement>
     <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-failsafe-plugin</artifactId>
+        <version>${surefire.version}</version>
+        <executions>
+          <execution>
+            <phase>verify</phase>
+            <goals>
+              <goal>integration-test</goal>
+              <goal>verify</goal>
+            </goals>
+            <configuration>
+              <!-- this need some times to run -->
+              <argLine>${fork.argLine} -Duser.language=en -Duser.country=US -Djava.locale.providers=COMPAT,CLDR
+                -Djava.protocol.handler.pkgs=javax.net.ssl
+                -Djavax.net.ssl.keyStore=${project.build.testOutputDirectory}/certificates/clientcert.jks
+                -Djavax.net.ssl.keyStorePassword=changeit
+                -Djavax.net.ssl.trustStore=${project.build.directory}/cacerts.jks</argLine>
+              <forkedProcessTimeoutInSeconds>15000</forkedProcessTimeoutInSeconds>
+              <dependenciesToScan>
+                <dependenciesToScan>jakartatck:websocket-tck</dependenciesToScan>
+              </dependenciesToScan>
+              <systemProperties>
+                <http2.timeout>${http2.timeout}</http2.timeout>
+                <porting.ts.url.class.1>com.sun.ts.tests.websocket.lib.implementation.sun.common.SunRIURL</porting.ts.url.class.1>
+                <ws_wait>2</ws_wait>
+              </systemProperties>
+              <!--            <excludes>-->
+              <!--              <exclude>**/AppTest**</exclude>-->
+              <!--            </excludes>-->
+              <!--            <includes>-->
+              <!--              <include>**/*IT*</include>-->
+              <!--            </includes>-->
+              <trimStackTrace>false</trimStackTrace>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-dependency-plugin</artifactId>
