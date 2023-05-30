@@ -1,10 +1,6 @@
-### Servlet TCK using arquillian and test Jetty 11.0.x
+### Websocket TCK using arquillian and test Jetty 12.0.x
 
 Currently, it's really on work in progress only and need to build locally few projects
-
-Current tests failures:
-- com.sun.ts.tests.servlet.api.jakarta_servlet.singlethreadmodel.URLClient.singleModelTest() (Jetty does not support Servlet Single Thread Model)
-- com.sun.ts.tests.servlet.api.jakarta_servlet_http.sessioncookieconfig.URLClient.constructortest1() (need to update from `master` branch)
 
 ### Current status result 
 

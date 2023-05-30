@@ -53,7 +53,7 @@ jobs:
       - name: Build Arquillian with Maven
         run: mvn install -B -U
 
-      - name: Checkout Servlet TCK
+      - name: Checkout Websocket TCK
         uses: actions/checkout@v3
         with:
           repository: 'olamy/jakartaee-tck'
@@ -62,7 +62,7 @@ jobs:
       - name: Install legacy javatest jar
         run: mvn  -ntp install:install-file -Dfile=./lib/javatest.jar -DgroupId=javatest -DartifactId=javatest -Dversion=5.0 -Dpackaging=jar
 
-      - name: Build Servlet TCK with Maven
+      - name: Build Websocket TCK with Maven
         run: mvn -V -B -U -pl :servlet -am clean install -DskipTests -e  -B -U
 
       - name: Checkout TCK Run
