@@ -15,7 +15,7 @@
     <maven.compiler.sources>11</maven.compiler.sources>
     <maven.compiler.release>11</maven.compiler.release>
     <junit.version>5.10.0</junit.version>
-    <slf4j.version>2.0.7</slf4j.version>
+    <slf4j.version>2.0.9</slf4j.version>
     <arquillian.core.version>1.7.0.Alpha14</arquillian.core.version> <!-- 1.7.0.Final-SNAPSHOT -->
     <arquillian.jetty.version>2.0.0.Final-SNAPSHOT</arquillian.jetty.version>
     <arquillian.jetty.artifactId>arquillian-jetty-embedded-12-ee10</arquillian.jetty.artifactId>
