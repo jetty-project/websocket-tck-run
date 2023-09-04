@@ -38,7 +38,7 @@ jobs:
     steps:
 
       - name: Checkout Arquillian
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: 'arquillian/arquillian-container-jetty'
           ref: 'jetty-12.0-security-refactoring'
@@ -54,7 +54,7 @@ jobs:
         run: mvn install -B -U
 
       - name: Checkout Websocket TCK
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: 'olamy/jakartaee-tck'
           ref: 'tck-refactor-websocket-2-arquillian-url'
@@ -66,7 +66,7 @@ jobs:
         run: mvn -V -B -U -pl :websocket-tck -am clean install -DskipTests -e  -B -U
 
       - name: Checkout TCK Run
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Build TCK Run with Maven
         run: mvn -V -B -U -am clean verify -e  -B -Dmaven.test.failure.ignore=true
