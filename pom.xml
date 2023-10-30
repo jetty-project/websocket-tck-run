@@ -19,7 +19,7 @@
     <arquillian.core.version>1.7.0.Alpha14</arquillian.core.version> <!-- 1.7.0.Final-SNAPSHOT -->
     <arquillian.jetty.version>2.0.0.Final-SNAPSHOT</arquillian.jetty.version>
     <arquillian.jetty.artifactId>arquillian-jetty-embedded-12-ee10</arquillian.jetty.artifactId>
-    <jetty.version>12.0.0-SNAPSHOT</jetty.version> <!-- 11.0.9-SNAPSHOT -->
+    <jetty.version>12.0.2</jetty.version> <!-- 11.0.9-SNAPSHOT -->
     <surefire.version>3.0.0</surefire.version> <!-- 3.0.0-M7-SNAPSHOT -->
     <jakarta.tck.version>10.0.0-SNAPSHOT</jakarta.tck.version>
     <fork.argLine>-Xmx8g -Xms4g</fork.argLine>
