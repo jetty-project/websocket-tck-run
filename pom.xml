@@ -274,32 +274,32 @@
           </execution>
         </executions>
       </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-dependency-plugin</artifactId>
-        <version>3.5.0</version>
-        <executions>
-          <execution>
-            <id>unpack</id>
-            <phase>generate-test-resources</phase>
-            <goals>
-              <goal>unpack</goal>
-            </goals>
-            <configuration>
-              <artifactItems>
-                <artifactItem>
-                  <groupId>jakartatck</groupId>
-                  <artifactId>libutil</artifactId>
-                  <type>jar</type>
-                  <overWrite>false</overWrite>
-                  <outputDirectory>${project.build.testOutputDirectory}/</outputDirectory>
-                  <includes>**/**cts_cert,**/**clientcert.jks,**/**clientcert.p12</includes>
-                </artifactItem>
-              </artifactItems>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
+<!--      <plugin>-->
+<!--        <groupId>org.apache.maven.plugins</groupId>-->
+<!--        <artifactId>maven-dependency-plugin</artifactId>-->
+<!--        <version>3.5.0</version>-->
+<!--        <executions>-->
+<!--          <execution>-->
+<!--            <id>unpack</id>-->
+<!--            <phase>generate-test-resources</phase>-->
+<!--            <goals>-->
+<!--              <goal>unpack</goal>-->
+<!--            </goals>-->
+<!--            <configuration>-->
+<!--              <artifactItems>-->
+<!--                <artifactItem>-->
+<!--                  <groupId>jakartatck</groupId>-->
+<!--                  <artifactId>libutil</artifactId>-->
+<!--                  <type>jar</type>-->
+<!--                  <overWrite>false</overWrite>-->
+<!--                  <outputDirectory>${project.build.testOutputDirectory}/</outputDirectory>-->
+<!--                  <includes>**/**cts_cert,**/**clientcert.jks,**/**clientcert.p12</includes>-->
+<!--                </artifactItem>-->
+<!--              </artifactItems>-->
+<!--            </configuration>-->
+<!--          </execution>-->
+<!--        </executions>-->
+<!--      </plugin>-->
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>keytool-maven-plugin</artifactId>
