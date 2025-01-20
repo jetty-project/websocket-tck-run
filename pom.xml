@@ -18,8 +18,8 @@
     <slf4j.version>2.0.7</slf4j.version>
     <arquillian.core.version>1.9.3.Final</arquillian.core.version>
     <arquillian.jetty.version>2.0.1.Final-SNAPSHOT</arquillian.jetty.version>
-    <arquillian.jetty.artifactId>arquillian-jetty-embedded-12-ee10</arquillian.jetty.artifactId>
-    <jetty.version>12.0.16</jetty.version> <!-- 11.0.9-SNAPSHOT -->
+    <arquillian.jetty.artifactId>arquillian-jetty-embedded-12-ee11</arquillian.jetty.artifactId>
+    <jetty.version>12.1.0.alpha1</jetty.version> <!-- 11.0.9-SNAPSHOT -->
     <surefire.version>3.0.0</surefire.version>
     <fork.argLine>-Xmx8g -Xms4g</fork.argLine>
     <http2.timeout></http2.timeout>
@@ -42,8 +42,8 @@
         <scope>import</scope>
       </dependency>
       <dependency>
-        <groupId>org.eclipse.jetty.ee10</groupId>
-        <artifactId>jetty-ee10-bom</artifactId>
+        <groupId>org.eclipse.jetty.ee11</groupId>
+        <artifactId>jetty-ee11-bom</artifactId>
         <version>${jetty.version}</version>
         <type>pom</type>
         <scope>import</scope>
@@ -67,20 +67,20 @@
       <artifactId>jetty-deploy</artifactId>
     </dependency>
     <dependency>
-      <groupId>org.eclipse.jetty.ee10</groupId>
-      <artifactId>jetty-ee10-servlet</artifactId>
+      <groupId>org.eclipse.jetty.ee11</groupId>
+      <artifactId>jetty-ee11-servlet</artifactId>
     </dependency>
     <dependency>
-      <groupId>org.eclipse.jetty.ee10</groupId>
-      <artifactId>jetty-ee10-webapp</artifactId>
+      <groupId>org.eclipse.jetty.ee11</groupId>
+      <artifactId>jetty-ee11-webapp</artifactId>
     </dependency>
     <dependency>
-      <groupId>org.eclipse.jetty.ee10.websocket</groupId>
-      <artifactId>jetty-ee10-websocket-jakarta-server</artifactId>
+      <groupId>org.eclipse.jetty.ee11.websocket</groupId>
+      <artifactId>jetty-ee11-websocket-jakarta-server</artifactId>
     </dependency>
     <dependency>
-      <groupId>org.eclipse.jetty.ee10.websocket</groupId>
-      <artifactId>jetty-ee10-websocket-jakarta-client</artifactId>
+      <groupId>org.eclipse.jetty.ee11.websocket</groupId>
+      <artifactId>jetty-ee11-websocket-jakarta-client</artifactId>
     </dependency>
     <dependency>
       <groupId>org.eclipse.jetty.http2</groupId>
@@ -97,18 +97,18 @@
       <scope>test</scope>
     </dependency>
     <dependency>
-      <groupId>org.eclipse.jetty.ee10</groupId>
-      <artifactId>jetty-ee10-annotations</artifactId>
+      <groupId>org.eclipse.jetty.ee11</groupId>
+      <artifactId>jetty-ee11-annotations</artifactId>
       <scope>test</scope>
     </dependency>
     <dependency>
-      <groupId>org.eclipse.jetty.ee10</groupId>
-      <artifactId>jetty-ee10-apache-jsp</artifactId>
+      <groupId>org.eclipse.jetty.ee11</groupId>
+      <artifactId>jetty-ee11-apache-jsp</artifactId>
       <scope>test</scope>
     </dependency>
     <dependency>
-      <groupId>org.eclipse.jetty.ee10</groupId>
-      <artifactId>jetty-ee10-glassfish-jstl</artifactId>
+      <groupId>org.eclipse.jetty.ee11</groupId>
+      <artifactId>jetty-ee11-glassfish-jstl</artifactId>
       <scope>test</scope>
     </dependency>
     <dependency>
