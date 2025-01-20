@@ -59,15 +59,28 @@ jobs:
           repository: 'jakartaee/platform-tck'
           ref: 'main'
 
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          java-version: 17
+          distribution: 'temurin'
+          cache: 'maven'
+
+      - name: Set up Maven
+        run: mvn --errors --batch-mode --show-version wrapper:wrapper "-Dmaven=3.9.9"
+
       - name: Install legacy javatest jar
-        run: mvn -ntp install:install-file -Dfile=./lib/javatest.jar -DgroupId=javatest -DartifactId=javatest -Dversion=5.0 -Dpackaging=jar
+        run: ./mvnw -ntp install:install-file -Dfile=./lib/javatest.jar -DgroupId=javatest -DartifactId=javatest -Dversion=5.0 -Dpackaging=jar
 
       - name: Build Websocket TCK with Maven
-        run: mvn -V -B -U clean install -DskipTests -e
+        run: ./mvnw -V -B -U clean install -DskipTests -e
 
       - name: Checkout TCK Run
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
+
+      - name: Set up Maven
+        run: mvn --errors --batch-mode --show-version wrapper:wrapper "-Dmaven=3.9.9"
 
       - name: Build TCK Run with Maven
-        run: mvn -V -B -U -am clean verify -e  -B -Dmaven.test.failure.ignore=true
+        run: ./mvnw -V -B -U -am clean verify -e  -B -Dmaven.test.failure.ignore=true
 
