@@ -38,13 +38,13 @@ jobs:
     steps:
 
       - name: Checkout Arquillian
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: 'arquillian/arquillian-container-jetty'
-          ref: 'jetty-12.0-security-refactoring'
+          ref: 'master'
 
       - name: Set up JDK
-        uses: actions/setup-java@v3
+        uses: actions/setup-java@v4
         with:
           java-version: 17
           distribution: 'temurin'
@@ -56,14 +56,14 @@ jobs:
       - name: Checkout Websocket TCK
         uses: actions/checkout@v3
         with:
-          repository: 'olamy/jakartaee-tck'
-          ref: 'tck-refactor-websocket-2-arquillian-url'
+          repository: 'jakartaee/platform-tck'
+          ref: 'main'
 
       - name: Install legacy javatest jar
         run: mvn  -ntp install:install-file -Dfile=./lib/javatest.jar -DgroupId=javatest -DartifactId=javatest -Dversion=5.0 -Dpackaging=jar
 
       - name: Build Websocket TCK with Maven
-        run: mvn -V -B -U -pl :websocket-tck -am clean install -DskipTests -e  -B -U
+        run: mvn -V -B -U clean install -DskipTests -e
 
       - name: Checkout TCK Run
         uses: actions/checkout@v3
