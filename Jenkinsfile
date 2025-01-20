@@ -2,9 +2,7 @@
 
 pipeline {
   agent { node { label 'linux' } }
-  triggers {
-    upstream(upstreamProjects: 'tck//tck-olamy-github-tck-run-module-glassfish/') //, threshold: hudson.model.Result.SUCCESS)
-  }
+
   options {
     buildDiscarder logRotator( numToKeepStr: '50' )
   }
@@ -24,7 +22,7 @@ pipeline {
             name: 'GITHUB_ORG_ARQUILLIAN',
             choices: ['arquillian','olamy'] )
 
-    string( defaultValue: 'jetty-12.0-security-refactoring', description: 'GIT branch name to build arquillian Jetty (master/tck-all-changes)',
+    string( defaultValue: 'master', description: 'GIT branch name to build arquillian Jetty (master/tck-all-changes)',
             name: 'ARQUILLIAN_JETTY_BRANCH' )
 
     string( defaultValue: 'jetty-12.0.x', description: 'GIT branch name to build Jetty (jetty-12.0.x)',
@@ -51,10 +49,10 @@ pipeline {
                         userRemoteConfigs: [[url: 'https://github.com/eclipse/jetty.project.git']]])
               timeout(time: 45, unit: 'MINUTES') {
                 withEnv(["JAVA_HOME=${tool "$JDKBUILD"}",
-                         "PATH+MAVEN=${env.JAVA_HOME}/bin:${tool "maven3"}/bin",
+                         "PATH+MAVEN=${env.JAVA_HOME}/bin:${tool 'maven3'}/bin",
                          "MAVEN_OPTS=-Xms2g -Xmx4g -Djava.awt.headless=true"]) {
                   configFileProvider([configFile(fileId: 'oss-settings.xml', variable: 'GLOBAL_MVN_SETTINGS')]) {
-                    sh "mvn --no-transfer-progress -s $GLOBAL_MVN_SETTINGS -V -B -U clean install -T5 -e -Pfast"
+                    sh "mvn -ntp -s $GLOBAL_MVN_SETTINGS -V -B -U clean install -T5 -e -DskipTests -Dmaven.build.cache.restoreGeneratedSources=false -Dmaven.build.cache.remote.url=http://nexus-service.nexus.svc.cluster.local:8081/repository/maven-build-cache -Dmaven.build.cache.remote.enabled=true -Dmaven.build.cache.remote.save.enabled=true -Dmaven.build.cache.remote.server.id=nexus-cred"
                     script {
                       if (JETTY_VERSION == "SNAPSHOT") {
                         def model = readMavenPom file: 'pom.xml'
@@ -80,7 +78,7 @@ pipeline {
                          "PATH+MAVEN=${env.JAVA_HOME}/bin:${tool "maven3"}/bin",
                          "MAVEN_OPTS=-Xms2g -Xmx4g -Djava.awt.headless=true"]) {
                   configFileProvider([configFile(fileId: 'oss-settings.xml', variable: 'GLOBAL_MVN_SETTINGS')]) {
-                    sh "mvn --no-transfer-progress -s $GLOBAL_MVN_SETTINGS -V -B -U clean install -DskipTests -T3 -e -Denforcer.skip=true"
+                    sh "mvn -ntp -s $GLOBAL_MVN_SETTINGS -V -B -U clean install -DskipTests -T3 -e -Denforcer.skip=true"
                   }
                 }
               }
