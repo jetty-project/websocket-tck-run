@@ -11,7 +11,7 @@ pipeline {
     choice(
             description: 'TCK Github org',
             name: 'GITHUB_ORG_TCK',
-            choices: ['olamy', 'jakartaee']
+            choices: ['jakartaee', 'olamy']
     )
 
     string( defaultValue: 'master', description: 'GIT branch name to build TCK (master/tckrefactor)',
