@@ -112,17 +112,6 @@
       <artifactId>jetty-ee10-glassfish-jstl</artifactId>
       <scope>test</scope>
     </dependency>
-<!--    <dependency>-->
-<!--      <groupId>jakartatck</groupId>-->
-<!--      <artifactId>libutil</artifactId>-->
-<!--      <version>${jakarta.tck.version}</version>-->
-<!--      <exclusions>-->
-<!--        <exclusion>-->
-<!--          <groupId>org.glassfish.metro</groupId>-->
-<!--          <artifactId>*</artifactId>-->
-<!--        </exclusion>-->
-<!--      </exclusions>-->
-<!--    </dependency>-->
     <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-api</artifactId>
@@ -261,7 +250,8 @@
               </dependenciesToScan>
               <systemProperties>
                 <http2.timeout>${http2.timeout}</http2.timeout>
-                <ws_wait>2</ws_wait>
+                <ws_wait>5</ws_wait>
+                <porting.ts.url.class.1>com.sun.ts.tests.websocket.lib.implementation.sun.common.SunRIURL</porting.ts.url.class.1>
               </systemProperties>
               <!--            <excludes>-->
               <!--              <exclude>**/AppTest**</exclude>-->
