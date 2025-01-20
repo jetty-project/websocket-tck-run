@@ -274,58 +274,6 @@
           </execution>
         </executions>
       </plugin>
-<!--      <plugin>-->
-<!--        <groupId>org.apache.maven.plugins</groupId>-->
-<!--        <artifactId>maven-dependency-plugin</artifactId>-->
-<!--        <version>3.5.0</version>-->
-<!--        <executions>-->
-<!--          <execution>-->
-<!--            <id>unpack</id>-->
-<!--            <phase>generate-test-resources</phase>-->
-<!--            <goals>-->
-<!--              <goal>unpack</goal>-->
-<!--            </goals>-->
-<!--            <configuration>-->
-<!--              <artifactItems>-->
-<!--                <artifactItem>-->
-<!--                  <groupId>jakartatck</groupId>-->
-<!--                  <artifactId>libutil</artifactId>-->
-<!--                  <type>jar</type>-->
-<!--                  <overWrite>false</overWrite>-->
-<!--                  <outputDirectory>${project.build.testOutputDirectory}/</outputDirectory>-->
-<!--                  <includes>**/**cts_cert,**/**clientcert.jks,**/**clientcert.p12</includes>-->
-<!--                </artifactItem>-->
-<!--              </artifactItems>-->
-<!--            </configuration>-->
-<!--          </execution>-->
-<!--        </executions>-->
-<!--      </plugin>-->
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>keytool-maven-plugin</artifactId>
-        <version>1.7</version>
-        <executions>
-          <execution>
-            <goals>
-              <goal>importCertificate</goal>
-            </goals>
-            <phase>process-test-resources</phase>
-          </execution>
-        </executions>
-        <configuration>
-          <!-- "$JAVA_HOME/bin/keytool -import -noprompt -alias cts -dname \"CN=CTS, OU=Java Software, O=Sun Microsystems Inc., L=Burlington, ST=MA, C=US\"
-          -file servlet-tck/bin/certificates/cts_cert -storetype JKS  -keystore cacerts.jks -storepass changeit -keypass changeit" -->
-          <noprompt>true</noprompt>
-          <alias>cts</alias>
-          <dname>CN=CTS, OU=Java Software, O=Sun Microsystems Inc., L=Burlington, ST=MA, C=US</dname>
-          <file>${project.build.testOutputDirectory}/certificates/cts_cert</file>
-          <storetype>JKS</storetype>
-          <keystore>${project.build.directory}/cacerts.jks</keystore>
-          <storepass>changeit</storepass>
-          <keypass>changeit</keypass>
-          <skipIfExist>true</skipIfExist>
-        </configuration>
-      </plugin>
     </plugins>
   </build>
 
