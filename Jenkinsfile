@@ -14,7 +14,7 @@ pipeline {
             choices: ['olamy', 'jakartaee']
     )
 
-    string( defaultValue: 'tck-refactor-websocket-2-arquillian-url', description: 'GIT branch name to build TCK (master/tckrefactor)',
+    string( defaultValue: 'master', description: 'GIT branch name to build TCK (master/tckrefactor)',
             name: 'TCK_BRANCH' )
 
     choice(
