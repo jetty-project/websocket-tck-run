@@ -104,7 +104,7 @@ pipeline {
                 sh "mvn -ntp install:install-file -Dfile=./lib/javatest.jar -DgroupId=javatest -DartifactId=javatest -Dversion=5.0 -Dpackaging=jar"
                 // TCK should be changed to always install
                 //  -Dmaven.build.cache.remote.url=http://nexus-service.nexus.svc.cluster.local:8081/repository/maven-build-cache -Dmaven.build.cache.remote.enabled=true -Dmaven.build.cache.remote.save.enabled=true -Dmaven.build.cache.remote.server.id=nexus-cred
-                sh "mvn -ntp -s $GLOBAL_MVN_SETTINGS -V -B -U -am clean install -DskipTests -e"
+                sh "mvn -ntp -s $GLOBAL_MVN_SETTINGS -V -B -U -am clean install -DskipTests -e Dmaven.build.cache.remote.url=http://nexus-service.nexus.svc.cluster.local:8081/repository/maven-build-cache -Dmaven.build.cache.remote.enabled=true -Dmaven.build.cache.remote.save.enabled=true -Dmaven.build.cache.remote.server.id=nexus-cred"
               }
             }
           }

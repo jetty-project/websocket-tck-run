@@ -8,7 +8,9 @@ import java.io.File;
 /**
  * Unit test for simple App.
  */
-public class AppTest extends com.sun.ts.tests.websocket.negdep.invalidpathparamtype.srv.onmessage.WSCClientIT {
+public class AppTest extends com.sun.ts.tests.websocket.ee.jakarta.websocket.server.serverendpoint.WSClientIT {
+
+//} com.sun.ts.tests.websocket.ee.jakarta.websocket.server.serverendpointconfig.builder.WSClientIT {
 
     public AppTest() throws Exception {
         super();
@@ -16,7 +18,8 @@ public class AppTest extends com.sun.ts.tests.websocket.negdep.invalidpathparamt
 
     @Test
     public void foo() throws Exception {
-        super.invalidTypeOnMessageUndeployOtherEndpointTest();
+        super.getSubprotocolsTest();
+        //super.getExtensionsTest();
     }
 
 }
