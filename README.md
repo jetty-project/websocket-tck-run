@@ -8,14 +8,17 @@ https://jenkins.webtide.net/job/tck/job/tck-servlet-arquillian-experiment/
 or 
 gh action of this project 
 
-#### TCK Servlet build
+#### TCK Servlet install
 
-This will build only the servlet TCK module
+This will install websocket tck artifacts
 ```shell
-git clone https://github.com/olamy/jakartaee-tck.git
-cd jakartaee-tck
-git checkout tck-refactor-websocket-2-arquillian-url
-clean install -pl :websocket-tck -am
+wget -O jakarta-websocket-tck.zip https://download.eclipse.org/jakartaee/websocket/2.2/jakarta-websocket-tck-2.2.0.zip
+unzip -j jakarta-websocket-tck.zip websocket-tck/artifacts/websocket-tck-common-2.2.0.pom websocket-tck/artifacts/websocket-tck-spec-tests-2.2.0.pom websocket-tck/artifacts/websocket-tck-common-2.2.0.jar websocket-tck/artifacts/websocket-tck-spec-tests-2.2.0.jar websocket-tck/artifacts/websocket-tck-2.2.0.pom
+mvn -ntp install:install-file -Dfile=./websocket-tck-2.2.0.pom -DgroupId=jakarta.tck -DartifactId=websocket-tck -Dversion=2.2.0 -Dpackaging=pom
+mvn -ntp install:install-file -Dfile=./websocket-tck-common-2.2.0.pom -DgroupId=jakarta.tck -DartifactId=websocket-tck-common -Dversion=2.2.0 -Dpackaging=pom
+mvn -ntp install:install-file -Dfile=./websocket-tck-common-2.2.0.jar -DgroupId=jakarta.tck -DartifactId=websocket-tck-common -Dversion=2.2.0 -Dpackaging=pom
+mvn -ntp install:install-file -Dfile=./websocket-tck-spec-tests-2.2.0.pom -DgroupId=jakarta.tck -DartifactId=websocket-tck-spec-tests -Dversion=2.2.0 -Dpackaging=pom
+mvn -ntp install:install-file -Dfile=./websocket-tck-spec-tests-2.2.0.jar -DgroupId=jakarta.tck -DartifactId=websocket-tck-spec-tests -Dversion=2.2.0 -Dpackaging=pom
 ```
 
 #### Arquillian Jetty 11.0.x support 
