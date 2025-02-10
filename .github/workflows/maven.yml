@@ -69,8 +69,8 @@ jobs:
       - name: Set up Maven
         run: mvn --errors --batch-mode --show-version wrapper:wrapper "-Dmaven=3.9.9"
 
-      - name: Install legacy javatest jar
-        run: ./mvnw -ntp install:install-file -Dfile=./lib/javatest.jar -DgroupId=javatest -DartifactId=javatest -Dversion=5.0 -Dpackaging=jar
+#      - name: Install legacy javatest jar
+#        run: ./mvnw -ntp install:install-file -Dfile=./lib/javatest.jar -DgroupId=javatest -DartifactId=javatest -Dversion=5.0 -Dpackaging=jar
 
       - name: Build Websocket TCK with Maven
         run: ./mvnw -V -B -U clean install -DskipTests -e
