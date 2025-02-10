@@ -31,6 +31,8 @@ pipeline {
     string( defaultValue: 'SNAPSHOT', description: 'Jetty Version',
             name: 'JETTY_VERSION' )
 
+    string( defaultValue: '2.2.0', description: 'TCK Version',
+            name: 'TCK_VERSION' )
 
     string( defaultValue: 'jdk17', description: 'JDK to build Jetty', name: 'JDKBUILD' )
   }
@@ -119,7 +121,7 @@ pipeline {
                    "PATH+MAVEN=${env.JAVA_HOME}/bin:${tool "maven3"}/bin",
                    "MAVEN_OPTS=-Xms4g -Xmx8g -Djava.awt.headless=true"]) {
             configFileProvider([configFile(fileId: 'oss-settings.xml', variable: 'GLOBAL_MVN_SETTINGS')]) {
-              sh "mvn -nsu -ntp -s $GLOBAL_MVN_SETTINGS -Dmaven.test.failure.ignore=true -V -B -U clean verify -e -Djetty.version=$JETTY_VERSION"
+              sh "mvn -nsu -ntp -s $GLOBAL_MVN_SETTINGS -Dmaven.test.failure.ignore=true -V -B -U clean verify -e -Dtck.verion=$TCK_VERSION -Djetty.version=$JETTY_VERSION"
             }
           }
         }

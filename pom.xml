@@ -22,6 +22,7 @@
     <jetty.version>12.0.17-SNAPSHOT</jetty.version>
     <surefire.version>3.5.2</surefire.version>
     <fork.argLine>-Xmx8g -Xms4g</fork.argLine>
+    <tck.version>2.2.0</tck.version>
     <http2.timeout></http2.timeout>
   </properties>
 
@@ -55,8 +56,14 @@
     <dependency>
       <groupId>jakarta.tck</groupId>
       <artifactId>websocket-tck-spec-tests</artifactId>
-      <version>2.2.0</version>
+      <version>${tck.version}</version>
     </dependency>
+    <dependency>
+      <groupId>jakarta.tck</groupId>
+      <artifactId>websocket-tck-common</artifactId>
+      <version>${tck.version}</version>
+    </dependency>
+
     <dependency>
       <groupId>org.jboss.arquillian.container</groupId>
       <artifactId>${arquillian.jetty.artifactId}</artifactId>
