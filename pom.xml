@@ -306,9 +306,7 @@
               </systemProperties>
               <trimStackTrace>false</trimStackTrace>
               <excludes>
-                <!--
                 <exclude>**/com/sun/ts/tests/websocket/negdep/onmessage/srv/binaryinputstreamboolean/**</exclude>
-                -->
               </excludes>
             </configuration>
           </execution>
