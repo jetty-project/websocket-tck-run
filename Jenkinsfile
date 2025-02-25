@@ -92,26 +92,26 @@ pipeline {
     //}
 
 
-//    stage("Checkout Build TCK Sources") {
-//      steps {
-//        ws('arquillian') {
-//          deleteDir()
-//          checkout([$class: 'GitSCM',
-//                    branches: [[name: "*/$TCK_BRANCH"]],
-//                    extensions: [[$class: 'CloneOption', depth: 1, noTags: true, shallow: true]],
-//                    userRemoteConfigs: [[url: 'https://github.com/${GITHUB_ORG_TCK}/platform-tck']]])
-//          timeout(time: 30, unit: 'MINUTES') {
-//            withEnv(["JAVA_HOME=${tool "$JDKBUILD"}",
-//                     "PATH+MAVEN=${env.JAVA_HOME}/bin:${tool "maven3"}/bin",
-//                     "MAVEN_OPTS=-Xms2g -Xmx4g -Djava.awt.headless=true"]) {
-//              configFileProvider([configFile(fileId: 'oss-settings.xml', variable: 'GLOBAL_MVN_SETTINGS')]) {
-//                sh "mvn -ntp -s $GLOBAL_MVN_SETTINGS -V -B -U -am clean install -DskipTests -e -Dmaven.build.cache.remote.url=http://nexus-service.nexus.svc.cluster.local:8081/repository/maven-build-cache -Dmaven.build.cache.remote.enabled=true -Dmaven.build.cache.remote.save.enabled=true -Dmaven.build.cache.remote.server.id=nexus-cred"
-//              }
-//            }
-//          }
-//        }
-//      }
-//    }
+    stage("Checkout Build TCK Sources") {
+      steps {
+        ws('arquillian') {
+          deleteDir()
+          checkout([$class: 'GitSCM',
+                    branches: [[name: "*/$TCK_BRANCH"]],
+                    extensions: [[$class: 'CloneOption', depth: 1, noTags: true, shallow: true]],
+                    userRemoteConfigs: [[url: 'https://github.com/${GITHUB_ORG_TCK}/platform-tck']]])
+          timeout(time: 30, unit: 'MINUTES') {
+            withEnv(["JAVA_HOME=${tool "$JDKBUILD"}",
+                     "PATH+MAVEN=${env.JAVA_HOME}/bin:${tool "maven3"}/bin",
+                     "MAVEN_OPTS=-Xms4g -Xmx6g -Djava.awt.headless=true"]) {
+              configFileProvider([configFile(fileId: 'oss-settings.xml', variable: 'GLOBAL_MVN_SETTINGS')]) {
+                sh "mvn -ntp -s $GLOBAL_MVN_SETTINGS -V -B -U -am clean install -DskipTests -e -Dmaven.build.cache.remote.url=http://nexus-service.nexus.svc.cluster.local:8081/repository/maven-build-cache -Dmaven.build.cache.remote.enabled=true -Dmaven.build.cache.remote.save.enabled=true -Dmaven.build.cache.remote.server.id=nexus-cred"
+              }
+            }
+          }
+        }
+      }
+    }
 
     stage("Install TCK") {
       steps {

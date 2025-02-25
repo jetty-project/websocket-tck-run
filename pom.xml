@@ -305,6 +305,11 @@
                 <jimage.dir>${project.build.directory}/jdk-bundle</jimage.dir>
               </systemProperties>
               <trimStackTrace>false</trimStackTrace>
+              <excludes>
+                <!--
+                <exclude>**/com/sun/ts/tests/websocket/negdep/onmessage/srv/binaryinputstreamboolean/**</exclude>
+                -->
+              </excludes>
             </configuration>
           </execution>
         </executions>
