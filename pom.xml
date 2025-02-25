@@ -65,6 +65,12 @@
     </dependency>
 
     <dependency>
+      <groupId>jakarta.tck</groupId>
+      <artifactId>signaturetest</artifactId>
+      <version>11.0.0-RC4</version>
+    </dependency>
+
+    <dependency>
       <groupId>org.jboss.arquillian.container</groupId>
       <artifactId>${arquillian.jetty.artifactId}</artifactId>
       <version>${arquillian.jetty.version}</version>
@@ -148,6 +154,11 @@
       <artifactId>arquillian-junit5-container</artifactId>
       <version>${arquillian.core.version}</version>
       <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>jakarta.tck</groupId>
+      <artifactId>sigtest-maven-plugin</artifactId>
+      <version>2.4</version>
     </dependency>
 
     <!-- just make Intellij/jpms happy when having all the projects together -->
@@ -234,6 +245,42 @@
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <version>3.8.1</version>
+        <executions>
+          <execution>
+            <id>copy</id>
+            <phase>package</phase>
+            <goals>
+              <goal>copy</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <artifactItems>
+            <artifactItem>
+              <groupId>jakarta.websocket</groupId>
+              <artifactId>jakarta.websocket-api</artifactId>
+              <version>2.2.0</version>
+              <type>jar</type>
+              <overWrite>false</overWrite>
+            </artifactItem>
+            <artifactItem>
+              <groupId>jakarta.websocket</groupId>
+              <artifactId>jakarta.websocket-client-api</artifactId>
+              <version>2.2.0</version>
+              <type>jar</type>
+              <overWrite>false</overWrite>
+            </artifactItem>
+          </artifactItems>
+          <stripVersion>true</stripVersion>
+          <outputDirectory>${project.build.directory}/websocket-apis</outputDirectory>
+          <overWriteReleases>false</overWriteReleases>
+          <overWriteSnapshots>true</overWriteSnapshots>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-failsafe-plugin</artifactId>
         <version>${surefire.version}</version>
         <executions>
@@ -254,6 +301,8 @@
                 <junit.log.traceflag>true</junit.log.traceflag>
                 <ws_wait>5</ws_wait>
                 <porting.ts.url.class.1>com.sun.ts.tests.websocket.lib.implementation.sun.common.SunRIURL</porting.ts.url.class.1>
+                <sigTestClasspath>${project.build.directory}/websocket-apis/jakarta.websocket-client-api.jar:${project.build.directory}/websocket-apis/jakarta.websocket-api.jar:${project.build.directory}/jdk-bundle/java.base:${project.build.directory}/jdk-bundle/java.rmi:${project.build.directory}/jdk-bundle/java.sql:${project.build.directory}/jdk-bundle/java.naming</sigTestClasspath>
+                <jimage.dir>${project.build.directory}/jdk-bundle</jimage.dir>
               </systemProperties>
               <trimStackTrace>false</trimStackTrace>
             </configuration>
