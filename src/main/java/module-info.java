@@ -11,5 +11,8 @@ module org.eclipse.jetty.tck
     provides Extension with
         org.eclipse.jetty.tck.Extension1,
         org.eclipse.jetty.tck.Extension2,
-        org.eclipse.jetty.tck.Extension3;
+        org.eclipse.jetty.tck.Extension3,
+        org.eclipse.jetty.tck.Ext1,
+        org.eclipse.jetty.tck.Ext2;
+
 }
