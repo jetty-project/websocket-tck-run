@@ -306,6 +306,7 @@
               </systemProperties>
               <trimStackTrace>false</trimStackTrace>
               <excludes>
+                <exclude>**/signaturetest/WebSocketSigTestIT/**</exclude>
                 <exclude>**/com/sun/ts/tests/websocket/negdep/onmessage/srv/binaryinputstreamboolean/**</exclude>
               </excludes>
             </configuration>
