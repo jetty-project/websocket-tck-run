@@ -67,7 +67,7 @@
     <dependency>
       <groupId>jakarta.tck</groupId>
       <artifactId>signaturetest</artifactId>
-      <version>11.0.0-RC4</version>
+      <version>11.0.0-RC8</version>
     </dependency>
 
     <dependency>
