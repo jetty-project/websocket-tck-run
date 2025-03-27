@@ -19,7 +19,7 @@
     <arquillian.core.version>1.9.3.Final</arquillian.core.version>
     <arquillian.jetty.version>2.0.1.Final-SNAPSHOT</arquillian.jetty.version>
     <arquillian.jetty.artifactId>arquillian-jetty-embedded-12-ee10</arquillian.jetty.artifactId>
-    <jetty.version>12.1.0.alpha1</jetty.version>
+    <jetty.version>12.1.0.alpha2</jetty.version>
     <surefire.version>3.5.2</surefire.version>
     <fork.argLine>-Xmx8g -Xms4g</fork.argLine>
     <tck.version>2.2.0</tck.version>
