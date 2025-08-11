@@ -38,7 +38,7 @@ jobs:
     steps:
 
       - name: Checkout Arquillian
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           repository: 'arquillian/arquillian-container-jetty'
           ref: 'master'
@@ -61,7 +61,7 @@ jobs:
           cache: 'maven'
 
       - name: Checkout TCK Run
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Set up Maven
         run: mvn --errors --batch-mode --show-version wrapper:wrapper "-Dmaven=3.9.9"
