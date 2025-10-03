@@ -38,7 +38,7 @@ jobs:
     steps:
 
       - name: Checkout Arquillian
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           repository: 'arquillian/arquillian-container-jetty'
           ref: 'master'
@@ -54,7 +54,7 @@ jobs:
         run: mvn install -B -U
 
       - name: Checkout Websocket TCK
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           repository: 'jakartaee/websocket'
           ref: 'master'
@@ -73,7 +73,7 @@ jobs:
         run: ./mvnw -V -B -U clean install -DskipTests -e
 
       - name: Checkout TCK Run
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Set up Maven
         run: mvn --errors --batch-mode --show-version wrapper:wrapper "-Dmaven=3.9.11"
