@@ -5,6 +5,8 @@ pipeline {
 
   options {
     buildDiscarder logRotator( numToKeepStr: '50' )
+    disableRestartFromStage()
+    disableConcurrentBuilds(abortPrevious: true)
   }
   parameters {
 
