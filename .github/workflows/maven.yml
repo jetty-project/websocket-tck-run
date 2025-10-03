@@ -51,7 +51,23 @@ jobs:
           cache: 'maven'
 
       - name: Build Arquillian with Maven
-        run: mvn install -B -U
+        run: mvn install -B
+
+      - name: Checkout Websocket TCK
+        uses: actions/checkout@v4
+        with:
+          repository: 'jakartaee/websocket'
+          ref: 'master'
+
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          java-version: 17
+          distribution: 'temurin'
+          cache: 'maven'
+
+      - name: Build Arquillian with Maven
+        run: mvn install -B
 
       - name: Set up JDK
         uses: actions/setup-java@v4
