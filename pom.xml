@@ -16,10 +16,10 @@
     <maven.compiler.release>17</maven.compiler.release>
     <junit.version>5.11.4</junit.version>
     <slf4j.version>2.0.16</slf4j.version>
-    <arquillian.core.version>1.9.3.Final</arquillian.core.version>
+    <arquillian.core.version>1.9.4.Final</arquillian.core.version>
     <arquillian.jetty.version>2.0.1.Final-SNAPSHOT</arquillian.jetty.version>
-    <arquillian.jetty.artifactId>arquillian-jetty-embedded-12-ee11</arquillian.jetty.artifactId>
-    <jetty.version>12.1.0.alpha1</jetty.version> <!-- 11.0.9-SNAPSHOT -->
+    <arquillian.jetty.artifactId>arquillian-jetty-embedded-12-1-ee11</arquillian.jetty.artifactId>
+    <jetty.version>12.1.1</jetty.version> <!-- 11.0.9-SNAPSHOT -->
     <surefire.version>3.5.2</surefire.version>
     <fork.argLine>-Xmx8g -Xms4g</fork.argLine>
     <http2.timeout></http2.timeout>
@@ -55,7 +55,7 @@
     <dependency>
       <groupId>jakarta.tck</groupId>
       <artifactId>websocket-tck-spec-tests</artifactId>
-      <version>2.2.0</version>
+      <version>2.3.0-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>org.jboss.arquillian.container</groupId>
