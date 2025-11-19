@@ -16,7 +16,7 @@ pipeline {
             choices: ['jakartaee', 'olamy']
     )
 
-    string( defaultValue: 'master', description: 'GIT branch name to build TCK (master/tckrefactor)',
+    string( defaultValue: 'main', description: 'GIT branch name to build TCK (main/tckrefactor)',
             name: 'TCK_BRANCH' )
 
     choice(
@@ -34,7 +34,7 @@ pipeline {
             name: 'JETTY_VERSION' )
 
 
-    string( defaultValue: 'jdk17', description: 'JDK to build Jetty', name: 'JDKBUILD' )
+    string( defaultValue: 'jdk21', description: 'JDK to build Jetty', name: 'JDKBUILD' )
   }
 
   stages {
