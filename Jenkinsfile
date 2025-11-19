@@ -57,9 +57,9 @@ pipeline {
                     sh "mvn -ntp -s $GLOBAL_MVN_SETTINGS -V -B -U clean install -T5 -e -DskipTests -Dmaven.build.cache.restoreGeneratedSources=false -Dmaven.build.cache.remote.url=http://nexus-service.nexus.svc.cluster.local:8081/repository/maven-build-cache -Dmaven.build.cache.remote.enabled=true -Dmaven.build.cache.remote.save.enabled=true -Dmaven.build.cache.remote.server.id=nexus-cred"
                     script {
                       if (JETTY_VERSION == "SNAPSHOT") {
-                        def model = readMavenPom file: 'pom.xml'
-                        JETTY_VERSION = model.getVersion()
+                        JETTY_VERSION = sh(script: "mvn -N help:evaluate -Dexpression=project.version -q -DforceStdout", returnStdout: true).trim()
                       }
+                      sh "echo Jetty Version is ${JETTY_VERSION}"
                     }
                   }
                 }
