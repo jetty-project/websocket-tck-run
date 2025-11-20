@@ -30,6 +30,9 @@ pipeline {
     string( defaultValue: 'jetty-12.1.x', description: 'GIT branch name to build Jetty (jetty-12.0.x)',
             name: 'JETTY_BRANCH' )
 
+    string( defaultValue: 'jetty', description: 'GitHub org to clone Jetty from  (jetty)',
+        name: 'JETTY_ORG' )
+
     string( defaultValue: 'SNAPSHOT', description: 'Jetty Version',
             name: 'JETTY_VERSION' )
 
@@ -48,7 +51,7 @@ pipeline {
               checkout([$class: 'GitSCM',
                         branches: [[name: "*/$JETTY_BRANCH"]],
                         extensions: [[$class: 'CloneOption', depth: 1, noTags: true, shallow: true, reference: "/home/jenkins/jetty.project.git"]],
-                        userRemoteConfigs: [[url: 'https://github.com/eclipse/jetty.project.git']]])
+                        userRemoteConfigs: [[url: "https://github.com/$JETTY_ORG/jetty.project.git"]]])
               timeout(time: 45, unit: 'MINUTES') {
                 withEnv(["JAVA_HOME=${tool "$JDKBUILD"}",
                          "PATH+MAVEN=${env.JAVA_HOME}/bin:${tool 'maven3'}/bin",
