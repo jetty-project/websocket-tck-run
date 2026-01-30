@@ -19,7 +19,7 @@
     <arquillian.core.version>1.10.0.Final</arquillian.core.version>
     <arquillian.jetty.version>2.0.1.Final-SNAPSHOT</arquillian.jetty.version>
     <arquillian.jetty.artifactId>arquillian-jetty-embedded-12-1-ee11</arquillian.jetty.artifactId>
-    <jetty.version>12.1.5-SNAPSHOT</jetty.version> <!-- 11.0.9-SNAPSHOT -->
+    <jetty.version>12.1.6</jetty.version> <!-- 11.0.9-SNAPSHOT -->
     <surefire.version>3.5.4</surefire.version>
     <fork.argLine>-Xmx8g -Xms4g</fork.argLine>
     <http2.timeout></http2.timeout>
